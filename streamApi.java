@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,9 +16,11 @@ public class streamApi {
         list.add(50);
         list.add(76);
 
+
         //filter example
         Stream<Integer> streamList=list.stream();
-        List<Integer> newList= streamList.filter(e->e%2==0) //Filter Returns a stream consisting of the elements of this stream that match the given predicate
+
+        List<Integer> newList= streamList.filter(e->e%2==0)//Filter Returns a stream consisting of the elements of this stream that match the given predicate
                 .collect(Collectors.toList());
 
         System.out.println(newList);
@@ -27,10 +31,14 @@ public class streamApi {
                 collect(Collectors.toList());
         System.out.println(newMap);
 
-        //print names start with A using stream
-        List<String> name=List.of("Abhay","Uddeshya","Ashok", "Abhinav", "Saransh");
+        //print occurence of words with string
+        List<String> name=List.of("Abhay","Uddeshya","Uddeshya", "Abhay", "Saransh");
         List<String> newNAme= name.stream().filter(e-> e.startsWith("A")).collect(Collectors.toList());
         System.out.println(newNAme);
+        //using collect function to store count of words and its occurences in Map
+        Map<String, Long> occur=name.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(occur);
+
 
     }
 }
