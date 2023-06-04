@@ -9,15 +9,20 @@ public class fabonacci {
     public static void main(String[] args) {
 
         int n=10;
-        int sum=1;
-        int fab=0;
+        int firsterm=0; // 1 2
+        int fab; //1  2
+        int secondterm=1; // 1 2
         for (int i=1; i<=n; i++){
 
-            fab=sum+fab;
+            System.out.print(firsterm+ " ,");
 
-            System.out.println("series: "+ fab);
+            fab=firsterm+secondterm;
+            firsterm=secondterm;
+            secondterm=fab;
+
 
         }
+
 
     }
 }

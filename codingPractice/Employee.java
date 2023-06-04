@@ -1,7 +1,6 @@
 package codingPractice;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Employee {
 
@@ -32,6 +31,36 @@ public class Employee {
         empList.add(new Employee(10000, "Ashok"));
         empList.add(new Employee(1000000, "Shiva"));
 
+
+        System.out.println("Emp with Salary greater then 10000 and starts with A");
+        for(Employee emp: empList){
+
+            if(emp.getSalary()>=10000 && emp.getName().startsWith("A")){
+                System.out.println(emp.getName()+" "+emp.getSalary());
+            }
+
+        }
+
+        List<Employee> filterList=new ArrayList<>();
+        for(Employee emp: empList){
+
+            if(emp.getSalary()>=10000){
+               filterList.add(emp);
+            }
+        }
+
+        Collections.sort(filterList, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+
+        System.out.println("Employee with salary greater then 10,000");
+
+        for (Employee emp: filterList){
+            System.out.println(emp.getName());
+        }
 
 
     }
