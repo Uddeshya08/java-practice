@@ -1,3 +1,14 @@
+List<String> mandatoryColumns = new ArrayList<>();
+
+            // Read mandatory columns from the M/O row
+            Row moRow = sheet.getRow(1);
+            for (Cell cell : moRow) {
+                if (cell.getStringCellValue().equals("M")) {
+                    Cell headerCell = sheet.getRow(0).getCell(cell.getColumnIndex());
+                    mandatoryColumns.add(headerCell.getStringCellValue());
+                }
+            }
+
 // ...
 
 // Iterate through rows to process data
